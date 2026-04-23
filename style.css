@@ -44,7 +44,12 @@ button { font: inherit; }
   margin: 0 auto;
 }
 
-.section { padding: 110px 0; }
+.section { padding: 90px 0; }
+.page-section {
+  display: none;
+  min-height: calc(100vh - 172px);
+}
+.page-section.active { display: block; }
 .eyebrow {
   margin: 0 0 14px;
   color: var(--gold-dark);
@@ -98,6 +103,10 @@ button { font: inherit; }
   font-size: 14px; color: var(--muted);
 }
 .nav-links a:hover { color: var(--text); }
+.nav-links a.active {
+  color: var(--text);
+  font-weight: 800;
+}
 .menu-toggle {
   display: none; background: transparent; border: 0; padding: 0; cursor: pointer;
 }
@@ -343,7 +352,7 @@ button { font: inherit; }
   font-weight: 600;
 }
 
-.golf-section { padding-top: 0; }
+.golf-section { padding-top: 90px; }
 .audience-grid { grid-template-columns: repeat(3, 1fr); }
 .audience-card {
   padding: 28px;
