@@ -27,6 +27,7 @@ body {
   background: var(--bg);
   font-family: 'Noto Serif KR', serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 body.menu-open { overflow: hidden; }
@@ -607,39 +608,89 @@ button { font: inherit; }
 .delay-2 { transition-delay: 0.24s; }
 
 @media (max-width: 980px) {
-  .page-nav-controls { display: none; }
   .menu-toggle { display: block; }
+
   .nav-links {
-    position: fixed; left: 20px; right: 20px; top: 88px;
+    position: fixed; left: 16px; right: 16px; top: 88px;
     flex-direction: column; align-items: stretch;
     padding: 20px;
     border-radius: 24px;
     background: rgba(6, 18, 10, 0.97);
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
-    transform: translateY(-16px);
+    transform: translateY(-16px) !important;
     opacity: 0; pointer-events: none;
+    white-space: normal;
   }
-  .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0) !important; }
+  .nav-links a { padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,0.1); font-size: 13px; }
+  .nav-links a:last-child { border-bottom: 0; }
+
+  /* 화살표를 하단 중앙으로 이동 */
+  .page-nav-controls {
+    top: auto;
+    bottom: 20px;
+    transform: none;
+    justify-content: center;
+    gap: 24px;
+    padding: 0;
+  }
+  .page-nav {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .section { padding: 60px 0 100px; }
+
   .hero-grid,
   .catalog-grid,
+  .catalog-grid.reverse,
   .intro-grid,
   .benefit-panels,
   .audience-grid {
     grid-template-columns: 1fr;
   }
-  .hero-metrics { grid-template-columns: 1fr; }
-  .plan-board { min-height: 520px; }
+
+  /* 호텔/골프 섹션 reverse 순서 보정 */
+  .catalog-grid.reverse .catalog-card { order: -1; }
+
+  .hero-metrics { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .hero-metrics article { padding: 16px; }
+  .hero-metrics strong { font-size: 28px; }
+  .hero-metrics span { font-size: 12px; }
+
+  .plan-board { min-height: 540px; }
+
+  .show-grid { grid-template-columns: repeat(2, 1fr); }
+  .show-modal-inner { padding: 28px 20px; }
 }
 
 @media (max-width: 640px) {
-  .section { padding: 84px 0; }
-  .container { width: min(100% - 28px, 1180px); }
-  .hero-copy h1 { font-size: 48px; }
-  .hero-text { font-size: 16px; }
+  .section { padding: 50px 0 100px; }
+  .container { width: min(100% - 24px, 1180px); }
+
+  .hero { padding-top: 40px; }
+  .hero-copy h1 { font-size: 38px; }
+  .hero-text { font-size: 15px; }
+  .hero-visual { display: none; }
+
   .feature-card,
   .catalog-card,
-  .plan-card { padding: 24px; }
-  .plan-board { min-height: 610px; }
+  .plan-card { padding: 20px; }
+
+  .section-head h2 { font-size: 26px; }
+  .catalog-copy h2 { font-size: 24px; }
+
+  .benefit-panel img { height: 200px; }
+  .benefit-panel h3 { font-size: 22px; }
+
+  .plan-board { min-height: 480px; }
+  .plan-card h3 { font-size: 44px; }
+
+  .show-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .show-modal-inner { padding: 24px 16px; max-height: 92vh; }
+  .show-modal-head h2 { font-size: 24px; }
+
   .footer-inner { flex-direction: column; gap: 14px; align-items: flex-start; }
 }

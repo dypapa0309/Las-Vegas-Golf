@@ -119,6 +119,31 @@ tierButtons.forEach((button) => {
 window.addEventListener('hashchange', () => showPage(getHashPage()));
 showPage(getHashPage());
 
+// 스와이프 네비게이션
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+  if (!showModal.hidden) return;
+  const deltaX = e.changedTouches[0].clientX - touchStartX;
+  const deltaY = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(deltaX) < 60 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+  if (deltaX < 0) {
+    const next = getPageIdByOffset(1);
+    window.history.pushState(null, '', `#${next}`);
+    showPage(next, 'next');
+  } else {
+    const prev = getPageIdByOffset(-1);
+    window.history.pushState(null, '', `#${prev}`);
+    showPage(prev, 'prev');
+  }
+}, { passive: true });
+
 // Show modal
 const showModal = document.getElementById('showModal');
 const showTrigger = document.querySelector('.show-trigger');
