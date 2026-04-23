@@ -118,3 +118,34 @@ tierButtons.forEach((button) => {
 
 window.addEventListener('hashchange', () => showPage(getHashPage()));
 showPage(getHashPage());
+
+// Show modal
+const showModal = document.getElementById('showModal');
+const showTrigger = document.querySelector('.show-trigger');
+const showModalClose = document.querySelector('.show-modal-close');
+const showModalBackdrop = document.querySelector('.show-modal-backdrop');
+
+function openShowModal() {
+  showModal.hidden = false;
+  document.body.classList.add('menu-open');
+  showModalClose.focus();
+}
+
+function closeShowModal() {
+  showModal.hidden = true;
+  document.body.classList.remove('menu-open');
+}
+
+if (showTrigger) {
+  showTrigger.addEventListener('click', openShowModal);
+  showTrigger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openShowModal(); }
+  });
+}
+
+if (showModalClose) showModalClose.addEventListener('click', closeShowModal);
+if (showModalBackdrop) showModalBackdrop.addEventListener('click', closeShowModal);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !showModal.hidden) closeShowModal();
+});

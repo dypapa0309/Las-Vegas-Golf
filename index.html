@@ -136,11 +136,12 @@
               <p>Shadow Creek, Wynn, TPC, Bali Hai 등 명문 코스 중심 라운딩 설계</p>
             </div>
           </article>
-          <article class="benefit-panel reveal delay-2">
+          <article class="benefit-panel reveal delay-2 show-trigger" role="button" tabindex="0" aria-label="쇼 영상 보기">
             <img src="assets/show-visual.png" alt="라스베이거스 쇼를 상징하는 비주얼" />
             <div>
               <h3>Entertainment</h3>
               <p>대표 쇼 관람, 프리미엄 다이닝, 현지 의전까지 포함된 고급 경험</p>
+              <span class="show-cta">▶ 쇼 영상 보기</span>
             </div>
           </article>
         </div>
@@ -281,6 +282,62 @@
         </div>
       </div>
     </section>
+
+    <!-- Show Modal -->
+    <div class="show-modal" id="showModal" role="dialog" aria-modal="true" aria-label="라스베이거스 쇼 영상" hidden>
+      <div class="show-modal-backdrop"></div>
+      <div class="show-modal-inner">
+        <div class="show-modal-head">
+          <p class="eyebrow">STAY &amp; PLAY — SHOW</p>
+          <h2>세계 최고의 쇼</h2>
+          <button class="show-modal-close" aria-label="닫기">✕</button>
+        </div>
+        <div class="show-grid">
+          <a class="show-card" href="https://www.youtube.com/watch?v=4zzTMjuCJvA" target="_blank" rel="noopener">
+            <div class="show-thumb">
+              <img src="https://img.youtube.com/vi/4zzTMjuCJvA/maxresdefault.jpg" alt="태양의 서커스 카쇼" />
+              <span class="play-icon">▶</span>
+            </div>
+            <p>태양의 서커스 — KÀ</p>
+          </a>
+          <a class="show-card" href="https://www.youtube.com/watch?v=4pX4lplsv7I" target="_blank" rel="noopener">
+            <div class="show-thumb">
+              <img src="https://img.youtube.com/vi/4pX4lplsv7I/maxresdefault.jpg" alt="태양의 서커스 오쇼" />
+              <span class="play-icon">▶</span>
+            </div>
+            <p>태양의 서커스 — O</p>
+          </a>
+          <a class="show-card" href="https://www.youtube.com/watch?v=qg7lTmIAZ78" target="_blank" rel="noopener">
+            <div class="show-thumb">
+              <img src="https://img.youtube.com/vi/qg7lTmIAZ78/maxresdefault.jpg" alt="어웨이크닝" />
+              <span class="play-icon">▶</span>
+            </div>
+            <p>Awakening</p>
+          </a>
+          <a class="show-card" href="https://www.youtube.com/watch?v=MIeK6ARyUn0" target="_blank" rel="noopener">
+            <div class="show-thumb">
+              <img src="https://img.youtube.com/vi/MIeK6ARyUn0/maxresdefault.jpg" alt="스피어" />
+              <span class="play-icon">▶</span>
+            </div>
+            <p>Sphere</p>
+          </a>
+          <a class="show-card" href="https://www.youtube.com/watch?v=Vtn-pnt1ub8" target="_blank" rel="noopener">
+            <div class="show-thumb">
+              <img src="https://img.youtube.com/vi/Vtn-pnt1ub8/maxresdefault.jpg" alt="마이클잭슨 원쇼" />
+              <span class="play-icon">▶</span>
+            </div>
+            <p>Michael Jackson ONE</p>
+          </a>
+          <a class="show-card" href="https://www.youtube.com/watch?v=p3YBPD6wsyc" target="_blank" rel="noopener">
+            <div class="show-thumb">
+              <img src="https://img.youtube.com/vi/p3YBPD6wsyc/maxresdefault.jpg" alt="라스베가스 쇼" />
+              <span class="play-icon">▶</span>
+            </div>
+            <p>Las Vegas Show</p>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <div class="page-nav-controls" aria-hidden="true">
       <button type="button" class="page-nav prev" aria-label="이전 페이지">‹</button>
