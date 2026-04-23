@@ -628,27 +628,37 @@ button { font: inherit; }
     transform: translateY(-16px) !important;
     opacity: 0; pointer-events: none;
     white-space: normal;
+    z-index: 50;
   }
   .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0) !important; }
-  .nav-links a { padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,0.1); font-size: 13px; }
+  .nav-links a { padding: 12px 0; border-bottom: 1px solid rgba(201,168,76,0.1); font-size: 13px; }
   .nav-links a:last-child { border-bottom: 0; }
+}
 
-  /* 화살표를 하단 중앙으로 이동 */
-  .page-nav-controls {
-    top: auto;
-    bottom: 20px;
-    transform: none;
-    justify-content: center;
-    gap: 24px;
-    padding: 0;
-  }
-  .page-nav {
-    width: 50px;
-    height: 50px;
-    font-size: 22px;
+/* ── 768px 이하: 일반 스크롤 페이지로 전환 ── */
+@media (max-width: 768px) {
+  /* 모든 섹션 항상 표시 */
+  .page-section {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    min-height: auto !important;
   }
 
-  .section { padding: 60px 0 100px; }
+  /* reveal 애니메이션 제거 */
+  .reveal,
+  .reveal.show {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+
+  /* 페이지 화살표 숨김 */
+  .page-nav-controls { display: none !important; }
+
+  .section { padding: 56px 0 60px; }
+  .hero { padding-top: 40px; }
 
   .hero-grid,
   .catalog-grid,
@@ -659,22 +669,23 @@ button { font: inherit; }
     grid-template-columns: 1fr;
   }
 
-  /* 호텔/골프 섹션 reverse 순서 보정 */
   .catalog-grid.reverse .catalog-card { order: -1; }
 
   .hero-metrics { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .hero-metrics article { padding: 16px; }
-  .hero-metrics strong { font-size: 28px; }
+  .hero-metrics article { padding: 16px 10px; }
+  .hero-metrics strong { font-size: 26px; }
   .hero-metrics span { font-size: 12px; }
 
-  .plan-board { min-height: 540px; }
+  .plan-board { min-height: auto; position: static; }
+  .tier-panel { position: static; opacity: 1; transform: none; pointer-events: auto; display: none; }
+  .tier-panel.active { display: block; }
 
   .show-grid { grid-template-columns: repeat(2, 1fr); }
   .show-modal-inner { padding: 28px 20px; }
 }
 
 @media (max-width: 640px) {
-  .section { padding: 44px 0 130px; }
+  .section { padding: 44px 0 56px; }
   .container { width: min(100% - 20px, 1180px); }
 
   /* hero */

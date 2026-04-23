@@ -6,32 +6,48 @@ const pageTriggers = document.querySelectorAll('a[href^="#"]');
 const pageNavPrev = document.querySelector('.page-nav.prev');
 const pageNavNext = document.querySelector('.page-nav.next');
 
+const isMobile = () => window.innerWidth <= 768;
+
 function closeMenu() {
   if (!menuToggle || !navLinks) return;
-
   navLinks.classList.remove('open');
   document.body.classList.remove('menu-open');
   menuToggle.setAttribute('aria-expanded', 'false');
 }
 
+// 모바일: 스크롤 이동 / 데스크탑: 페이지 전환
 function showPage(pageId, direction = 'next') {
-  const hasPage = Array.from(pageSections).some((section) => section.id === pageId);
+  const hasPage = Array.from(pageSections).some((s) => s.id === pageId);
   const targetId = hasPage ? pageId : 'home';
 
+  if (isMobile()) {
+    const target = document.getElementById(targetId);
+    if (target) {
+      const headerH = document.querySelector('.header')?.offsetHeight || 82;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    navAnchors.forEach((a) => {
+      a.classList.toggle('active', a.getAttribute('href') === `#${targetId}`);
+    });
+    closeMenu();
+    return;
+  }
+
+  // 데스크탑 페이지 전환
   pageSections.forEach((section) => {
     const isActive = section.id === targetId;
     section.classList.toggle('active', isActive);
     section.classList.toggle('slide-right', isActive && direction === 'next');
     section.classList.toggle('slide-left', isActive && direction === 'prev');
     section.setAttribute('aria-hidden', String(!isActive));
-
     if (isActive) {
       section.querySelectorAll('.reveal').forEach((el) => el.classList.add('show'));
     }
   });
 
-  navAnchors.forEach((anchor) => {
-    anchor.classList.toggle('active', anchor.getAttribute('href') === `#${targetId}`);
+  navAnchors.forEach((a) => {
+    a.classList.toggle('active', a.getAttribute('href') === `#${targetId}`);
   });
 
   window.scrollTo(0, 0);
@@ -43,7 +59,7 @@ function getHashPage() {
 }
 
 function getCurrentPageIndex() {
-  return Array.from(pageSections).findIndex((section) => section.classList.contains('active'));
+  return Array.from(pageSections).findIndex((s) => s.classList.contains('active'));
 }
 
 function getPageIdByOffset(offset) {
@@ -65,15 +81,17 @@ pageTriggers.forEach((anchor) => {
   anchor.addEventListener('click', (event) => {
     const pageId = anchor.getAttribute('href').replace('#', '');
     const target = document.getElementById(pageId);
-
     if (!target || !target.matches('[data-page]')) return;
-
     event.preventDefault();
     window.history.pushState(null, '', `#${pageId}`);
-    const currentIndex = getCurrentPageIndex();
-    const targetIndex = Array.from(pageSections).findIndex((section) => section.id === pageId);
-    const direction = targetIndex > currentIndex ? 'next' : 'prev';
-    showPage(pageId, direction);
+    if (!isMobile()) {
+      const currentIndex = getCurrentPageIndex();
+      const targetIndex = Array.from(pageSections).findIndex((s) => s.id === pageId);
+      const direction = targetIndex > currentIndex ? 'next' : 'prev';
+      showPage(pageId, direction);
+    } else {
+      showPage(pageId);
+    }
   });
 });
 
@@ -93,17 +111,16 @@ if (pageNavNext) {
   });
 }
 
+// 데스크탑 reveal 애니메이션
 const revealTargets = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('show');
   });
 }, { threshold: 0.12 });
-
 revealTargets.forEach((el) => observer.observe(el));
 
+// 멤버십 탭
 const tierButtons = document.querySelectorAll('.tier-btn');
 const tierPanels = document.querySelectorAll('.tier-panel');
 
@@ -111,38 +128,39 @@ function activateTier(tier) {
   tierButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.tier === tier));
   tierPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.tierPanel === tier));
 }
-
 tierButtons.forEach((button) => {
   button.addEventListener('click', () => activateTier(button.dataset.tier));
 });
 
-window.addEventListener('hashchange', () => showPage(getHashPage()));
-showPage(getHashPage());
+// 모바일 스크롤 시 nav active 업데이트
+function updateNavOnScroll() {
+  if (!isMobile()) return;
+  const headerH = document.querySelector('.header')?.offsetHeight || 82;
+  let current = 'home';
+  pageSections.forEach((section) => {
+    const top = section.getBoundingClientRect().top - headerH;
+    if (top <= 60) current = section.id;
+  });
+  navAnchors.forEach((a) => {
+    a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+  });
+}
+window.addEventListener('scroll', updateNavOnScroll, { passive: true });
 
-// 스와이프 네비게이션
-let touchStartX = 0;
-let touchStartY = 0;
+window.addEventListener('hashchange', () => {
+  if (!isMobile()) showPage(getHashPage());
+});
 
-document.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  if (!showModal.hidden) return;
-  const deltaX = e.changedTouches[0].clientX - touchStartX;
-  const deltaY = e.changedTouches[0].clientY - touchStartY;
-  if (Math.abs(deltaX) < 60 || Math.abs(deltaX) < Math.abs(deltaY)) return;
-  if (deltaX < 0) {
-    const next = getPageIdByOffset(1);
-    window.history.pushState(null, '', `#${next}`);
-    showPage(next, 'next');
-  } else {
-    const prev = getPageIdByOffset(-1);
-    window.history.pushState(null, '', `#${prev}`);
-    showPage(prev, 'prev');
+// 초기 로드
+if (isMobile()) {
+  // 모바일: 모든 섹션 보이게, 해시 있으면 스크롤
+  const hash = getHashPage();
+  if (hash !== 'home') {
+    setTimeout(() => showPage(hash), 100);
   }
-}, { passive: true });
+} else {
+  showPage(getHashPage());
+}
 
 // Show modal
 const showModal = document.getElementById('showModal');
