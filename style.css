@@ -101,6 +101,7 @@ button { font: inherit; }
   border-bottom: 1px solid rgba(201, 168, 76, 0.2);
 }
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,11 +121,15 @@ button { font: inherit; }
 .brand-text small { font-family: 'Cinzel', serif; font-size: 10px; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; }
 
 .nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex; align-items: center; gap: 28px;
   font-family: 'Cinzel', serif;
   font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--muted);
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--gold-light); }
 .nav-links a.active {
