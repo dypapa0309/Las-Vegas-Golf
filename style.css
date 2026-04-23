@@ -25,7 +25,7 @@ body {
   margin: 0;
   color: var(--text);
   background: var(--bg);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', serif;
   line-height: 1.6;
 }
 
@@ -70,9 +70,11 @@ button { font: inherit; }
 .eyebrow {
   margin: 0 0 14px;
   color: var(--gold);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
 }
 
 .section-head {
@@ -114,12 +116,15 @@ button { font: inherit; }
   border: 1px solid rgba(201, 168, 76, 0.35);
 }
 .brand-text { display: grid; }
-.brand-text strong { font-size: 16px; color: var(--text); }
-.brand-text small { font-size: 11px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+.brand-text strong { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: 0.08em; }
+.brand-text small { font-family: 'Cinzel', serif; font-size: 10px; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; }
 
 .nav-links {
   display: flex; align-items: center; gap: 28px;
-  font-size: 14px; color: var(--muted);
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
 }
 .nav-links a:hover { color: var(--gold-light); }
 .nav-links a.active {
@@ -159,8 +164,12 @@ button { font: inherit; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  min-height: 54px; padding: 0 24px; border-radius: 999px;
-  font-weight: 700; transition: 0.25s ease, transform 0.25s ease;
+  min-height: 54px; padding: 0 28px; border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  transition: 0.25s ease, transform 0.25s ease;
 }
 .page-nav-controls {
   position: fixed;
@@ -251,6 +260,9 @@ button { font: inherit; }
 .hero-card-copy p,
 .hero-card-copy span {
   margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
   color: var(--muted);
 }
 .hero-card-copy strong {
@@ -277,7 +289,7 @@ button { font: inherit; }
   font-size: 30px;
   margin-bottom: 10px;
 }
-.feature-card h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; color: var(--text); }
+.feature-card h3 { margin: 0 0 12px; font-family: 'Cinzel', serif; font-size: 18px; font-weight: 600; letter-spacing: 0.06em; line-height: 1.4; color: var(--text); }
 .feature-card p { margin: 0; color: var(--muted); }
 
 .dark-section {
@@ -317,12 +329,15 @@ button { font: inherit; }
 }
 .tier-btn {
   border: 0;
-  padding: 12px 18px;
+  padding: 12px 20px;
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 .tier-btn.active {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
@@ -343,8 +358,10 @@ button { font: inherit; }
 .plan-label {
   margin: 0 0 10px;
   color: var(--gold);
-  font-size: 13px;
-  letter-spacing: 0.16em;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 .plan-card h3 {
@@ -398,7 +415,10 @@ button { font: inherit; }
 .catalog-card h3,
 .audience-card h3 {
   margin: 0 0 18px;
-  font-size: 24px;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   color: var(--gold);
 }
 .chip-list {
