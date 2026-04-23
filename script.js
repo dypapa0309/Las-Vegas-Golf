@@ -3,6 +3,8 @@ const navLinks = document.querySelector('.nav-links');
 const navAnchors = document.querySelectorAll('.nav-links a');
 const pageSections = document.querySelectorAll('[data-page]');
 const pageTriggers = document.querySelectorAll('a[href^="#"]');
+const pageNavPrev = document.querySelector('.page-nav.prev');
+const pageNavNext = document.querySelector('.page-nav.next');
 
 function closeMenu() {
   if (!menuToggle || !navLinks) return;
@@ -12,13 +14,15 @@ function closeMenu() {
   menuToggle.setAttribute('aria-expanded', 'false');
 }
 
-function showPage(pageId) {
+function showPage(pageId, direction = 'next') {
   const hasPage = Array.from(pageSections).some((section) => section.id === pageId);
   const targetId = hasPage ? pageId : 'home';
 
   pageSections.forEach((section) => {
     const isActive = section.id === targetId;
     section.classList.toggle('active', isActive);
+    section.classList.toggle('slide-right', isActive && direction === 'next');
+    section.classList.toggle('slide-left', isActive && direction === 'prev');
     section.setAttribute('aria-hidden', String(!isActive));
 
     if (isActive) {
@@ -36,6 +40,16 @@ function showPage(pageId) {
 
 function getHashPage() {
   return window.location.hash.replace('#', '') || 'home';
+}
+
+function getCurrentPageIndex() {
+  return Array.from(pageSections).findIndex((section) => section.classList.contains('active'));
+}
+
+function getPageIdByOffset(offset) {
+  const currentIndex = getCurrentPageIndex();
+  const nextIndex = (currentIndex + offset + pageSections.length) % pageSections.length;
+  return pageSections[nextIndex].id;
 }
 
 if (menuToggle && navLinks) {
@@ -56,9 +70,28 @@ pageTriggers.forEach((anchor) => {
 
     event.preventDefault();
     window.history.pushState(null, '', `#${pageId}`);
-    showPage(pageId);
+    const currentIndex = getCurrentPageIndex();
+    const targetIndex = Array.from(pageSections).findIndex((section) => section.id === pageId);
+    const direction = targetIndex > currentIndex ? 'next' : 'prev';
+    showPage(pageId, direction);
   });
 });
+
+if (pageNavPrev) {
+  pageNavPrev.addEventListener('click', () => {
+    const nextPage = getPageIdByOffset(-1);
+    window.history.pushState(null, '', `#${nextPage}`);
+    showPage(nextPage, 'prev');
+  });
+}
+
+if (pageNavNext) {
+  pageNavNext.addEventListener('click', () => {
+    const nextPage = getPageIdByOffset(1);
+    window.history.pushState(null, '', `#${nextPage}`);
+    showPage(nextPage, 'next');
+  });
+}
 
 const revealTargets = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
