@@ -55,7 +55,7 @@ button { font: inherit; }
   opacity: 0;
   transform: translateX(40px);
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  min-height: calc(100vh - 172px);
+  min-height: calc(100vh - 82px);
   overflow-x: hidden;
 }
 .page-section.active {
@@ -64,6 +64,7 @@ button { font: inherit; }
   justify-content: center;
   opacity: 1;
   transform: translateX(0);
+  padding: 48px 0;
 }
 .page-section.slide-left {
   transform: translateX(-40px);
