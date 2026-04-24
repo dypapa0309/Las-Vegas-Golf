@@ -14,7 +14,7 @@
   <div class="site-bg"></div>
 
   <header class="header">
-    <div class="container nav">
+    <div class="container header-panel">
       <a class="brand" href="#home">
         <span class="brand-mark">RLV</span>
         <span class="brand-text">
@@ -24,7 +24,9 @@
       </a>
 
       <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
       <nav class="nav-links">
@@ -42,16 +44,20 @@
   <main id="top">
     <section id="home" class="hero page-section active" data-page>
       <div class="hero-overlay"></div>
-      <div class="hero-full-content reveal">
-        <p class="eyebrow">Las Vegas Premium VIP Membership</p>
-        <h1>
-          라스베이거스를<br />
-          매년 방문하는 것이 아니라,<br />
-          <em>프리미엄을 소유하는 방식</em>
-        </h1>
-        <p class="hero-tagline">By Invitation Only</p>
+      <div class="hero-glow"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Las Vegas VIP Membership</p>
+        <div class="hero-copy">
+          <span class="hero-label">Royal LV Curated Access</span>
+          <h1>라스베이거스를<br /><em>프리미엄 라이프스타일</em>로 소유하다</h1>
+          <p class="hero-text">호텔, 골프, 쇼, VIP 서비스가 하나로 연결된 단 하나의 멤버십.</p>
+        </div>
         <div class="hero-actions">
-          <a href="#membership" class="btn btn-ghost">Discover <span>→</span></a>
+          <a href="#membership" class="btn btn-gold">Membership Tier <span>→</span></a>
+          <button type="button" class="hero-play show-trigger" aria-label="쇼 영상 보기">
+            <span>▶</span>
+            <strong>Show</strong>
+          </button>
         </div>
         <div class="hero-stats">
           <span>19 Hotels</span>
@@ -95,35 +101,28 @@
       </div>
     </section>
 
-    <section id="benefits" class="section dark-section page-section" data-page>
-      <div class="container benefits-wrap">
-        <div class="section-head light reveal">
+    <section id="benefits" class="section benefits page-section" data-page>
+      <div class="container">
+        <div class="section-head reveal">
           <p class="eyebrow">STAY & PLAY</p>
-          <h2>라스베이거스의 모든 것을 하나로</h2>
+          <h2>프리미엄 혜택이<br />한눈에 보이는</h2>
         </div>
-
-        <div class="benefit-panels">
-          <article class="benefit-panel reveal">
-            <img src="assets/stay-visual.png" alt="프리미엄 호텔을 상징하는 비주얼" />
-            <div>
-              <h3>Luxury Stay</h3>
-              <p>MGM, Bellagio, Aria, Wynn, Venetian 등 프리미엄 브랜드 중심 운영</p>
-            </div>
+        <div class="benefit-grid">
+          <article class="benefit-card reveal">
+            <span class="benefit-mark">HOTEL</span>
+            <h3>Luxury Stay</h3>
+            <p>19개 호텔, 시그니처 스위트, 전담 컨시어지로 완성되는 초호화 스테이.</p>
           </article>
-          <article class="benefit-panel reveal delay-1">
-            <img src="assets/golf-visual.png" alt="골프 코스를 상징하는 비주얼" />
-            <div>
-              <h3>Elite Golf</h3>
-              <p>Shadow Creek, Wynn, TPC, Bali Hai 등 명문 코스 중심 라운딩 설계</p>
-            </div>
+          <article class="benefit-card reveal delay-1">
+            <span class="benefit-mark">GOLF</span>
+            <h3>Elite Golf</h3>
+            <p>Shadow Creek, TPC, Wynn 등 명문 코스에서 예약 경쟁 없이 즐기는 라운딩.</p>
           </article>
-          <article class="benefit-panel reveal delay-2 show-trigger" role="button" tabindex="0" aria-label="쇼 영상 보기">
-            <img src="assets/show-visual.png" alt="라스베이거스 쇼를 상징하는 비주얼" />
-            <div>
-              <h3>Entertainment</h3>
-              <p>대표 쇼 관람, 프리미엄 다이닝, 현지 의전까지 포함된 고급 경험</p>
-              <span class="show-cta">▶ 쇼 영상 보기</span>
-            </div>
+          <article class="benefit-card reveal delay-2 show-trigger" role="button" tabindex="0" aria-label="쇼 영상 보기">
+            <span class="benefit-mark">SHOW</span>
+            <h3>Entertainment</h3>
+            <p>최고급 쇼 관람, 프라이빗 다이닝, VIP 무대 뒤 체험까지 포함.</p>
+            <span class="show-cta">▶ 쇼 영상 보기</span>
           </article>
         </div>
       </div>
@@ -133,34 +132,47 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Membership</p>
-          <h2>두 개의 티어,<br><em>하나의 기준</em></h2>
+          <h2>세 개의 티어로<br /><em>프리미엄을 선택하다</em></h2>
         </div>
-        <div class="tiers-grid reveal delay-1">
-          <article class="tier-card">
-            <p class="plan-label">Premium Entry</p>
+        <div class="membership-grid reveal delay-1">
+          <article class="tier-card tier-card--gold">
+            <p class="plan-label">Gold Tier</p>
             <h3 class="tier-price">$50,000</h3>
-            <p class="tier-sub">6박 7일 · 프라이빗 VIP</p>
+            <p class="tier-sub">6박 7일 · 프리미엄 입문</p>
             <ul>
-              <li>항공 일반석</li>
-              <li>호텔 주니어 스위트 룸</li>
-              <li>전 일정 차량 · 식사 · 전담 가이드</li>
-              <li>쇼 2회 · 골프 라운드 4회</li>
-              <li>마사지 및 프라이빗 파티</li>
-              <li>미이용 시 월 $1,000 기프트카드</li>
+              <li>일반석 항공</li>
+              <li>주니어 스위트</li>
+              <li>전 일정 차량 · 가이드</li>
+              <li>쇼 2회 · 골프 4회</li>
+              <li>프라이빗 파티</li>
             </ul>
+            <a class="btn btn-outline" href="#top">Join Gold</a>
           </article>
-          <article class="tier-card tier-card--ultimate">
-            <p class="plan-label">Ultimate Class</p>
-            <h3 class="tier-price">$100,000</h3>
-            <p class="tier-sub">9박 10일 · 최상위 라인업</p>
+          <article class="tier-card tier-card--platinum">
+            <p class="plan-label">Platinum Tier</p>
+            <h3 class="tier-price">$85,000</h3>
+            <p class="tier-sub">8박 9일 · 엘리트 큐레이션</p>
             <ul>
-              <li>항공 비즈니스 클래스</li>
-              <li>호텔 스위트 룸</li>
-              <li>전 일정 차량 · 식사 · 전담 가이드</li>
-              <li>쇼 3회 · 골프 라운드 8회</li>
-              <li>마사지 및 프라이빗 파티</li>
-              <li>미이용 시 월 $2,000 기프트카드</li>
+              <li>비즈니스 클래스 항공</li>
+              <li>스위트 룸</li>
+              <li>전담 컨시어지</li>
+              <li>쇼 3회 · 골프 6회</li>
+              <li>VIP 다이닝</li>
             </ul>
+            <a class="btn btn-outline" href="#top">Join Platinum</a>
+          </article>
+          <article class="tier-card tier-card--black">
+            <p class="plan-label">Black Tier</p>
+            <h3 class="tier-price">$150,000</h3>
+            <p class="tier-sub">12박 14일 · 로열 전용</p>
+            <ul>
+              <li>퍼스트 클래스 항공</li>
+              <li>프라이빗 스위트</li>
+              <li>맞춤형 VIP 일정</li>
+              <li>쇼 4회 · 골프 10회</li>
+              <li>전용 리무진</li>
+            </ul>
+            <a class="btn btn-gold" href="#top">Join Black</a>
           </article>
         </div>
         <p class="membership-note reveal delay-2">멤버십 기간 1년(30일) 기준 · 최소 3개월 유지 후 중도 해지 시 100% 환불</p>
@@ -169,52 +181,61 @@
 
     <section id="hotels" class="section catalog page-section" data-page>
       <div class="container catalog-grid">
-        <div class="catalog-copy reveal">
-          <p class=”eyebrow”>HOTEL CURATION</p>
-          <h2>세계 최고 수준의 호텔, 19개 라인업</h2>
-          <p>MGM, Bellagio, Aria, Wynn, Venetian 등 5성급 럭셔리 호텔 중심 운영. 멤버십 하나로 최상급 숙박이 보장됩니다.</p>
-        </div>
-
-        <div class="catalog-card reveal delay-1">
-          <h3>대표 호텔 라인업</h3>
-          <div class="chip-list">
-            <span>MGM Grand</span>
-            <span>Bellagio</span>
-            <span>Aria</span>
-            <span>Wynn</span>
-            <span>Encore</span>
-            <span>Venetian</span>
-            <span>Palazzo</span>
-            <span>Caesars Palace</span>
-            <span>Cosmopolitan</span>
-            <span>Mandalay Bay</span>
+        <div class="catalog-card hotel-card reveal">
+          <div class="catalog-card-visual">
+            <img src="assets/stay-visual.png" alt="프리미엄 호텔 숙박" />
           </div>
+          <div class="catalog-card-copy">
+            <p class="eyebrow">HOTEL CURATION</p>
+            <h3>19개의 프리미엄 호텔 라인업</h3>
+            <p>5성급 스위트, 화이트 글러브 컨시어지, 프라이빗 체크인으로 완성되는 멤버십 전용 스테이.</p>
+            <div class="chip-list">
+              <span>MGM Grand</span>
+              <span>Bellagio</span>
+              <span>Aria</span>
+              <span>Wynn</span>
+              <span>Venetian</span>
+              <span>Palazzo</span>
+              <span>Caesars Palace</span>
+              <span>Cosmopolitan</span>
+              <span>Mandalay Bay</span>
+            </div>
+          </div>
+        </div>
+        <div class="catalog-copy reveal delay-1">
+          <h2>쉬는 시간조차 경이로운<br /><em>호텔 큐레이션</em></h2>
+          <p>멤버십 하나로 최상위 호텔과 특별한 라운지를 경험할 수 있는 프라이빗 스테이.</p>
         </div>
       </div>
     </section>
 
     <section id="golf" class="section golf-section page-section" data-page>
       <div class="container catalog-grid reverse">
-        <div class="catalog-card reveal delay-1">
-          <h3>대표 골프 코스</h3>
-          <div class="chip-list">
-            <span>Shadow Creek</span>
-            <span>Wynn Golf Club</span>
-            <span>TPC Las Vegas</span>
-            <span>Bali Hai</span>
-            <span>Revere</span>
-            <span>Rio Secco</span>
-            <span>Angel Park</span>
-            <span>Paiute</span>
-            <span>Reflection Bay</span>
-            <span>Southern Highlands</span>
+        <div class="catalog-card golf-card reveal delay-1">
+          <div class="catalog-card-visual">
+            <img src="assets/golf-visual.png" alt="프리미엄 골프 코스" />
+          </div>
+          <div class="catalog-card-copy">
+            <p class="eyebrow">GOLF EXPERIENCE</p>
+            <h3>24개의 명문 골프 코스</h3>
+            <p>예약 없이 즐기는 하이엔드 라운딩, 전용 캐디와 VIP 라운지를 포함합니다.</p>
+            <div class="chip-list">
+              <span>Shadow Creek</span>
+              <span>Wynn Golf Club</span>
+              <span>TPC Las Vegas</span>
+              <span>Bali Hai</span>
+              <span>Revere</span>
+              <span>Rio Secco</span>
+              <span>Angel Park</span>
+              <span>Paiute</span>
+              <span>Reflection Bay</span>
+              <span>Southern Highlands</span>
+            </div>
           </div>
         </div>
-
         <div class="catalog-copy reveal">
-          <p class=”eyebrow”>GOLF EXPERIENCE</p>
-          <h2>명문 코스 24개, 예약 없이 즐기는 라운딩</h2>
-          <p>Shadow Creek, Wynn, TPC 등 하이엔드 코스 중심 운영. 별도 예약 없이 원하는 코스에서 프리미엄 라운딩을 경험하세요.</p>
+          <h2>예약 없이도 가능한<br /><em>프라이빗 라운딩</em></h2>
+          <p>명문 코스와 특별 티타임, 골프 전용 셀렉션으로 한 차원 높은 플레이를 제공합니다.</p>
         </div>
       </div>
     </section>
@@ -223,35 +244,28 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Who Is This For</p>
-          <h2>이 멤버십을 위한<br><em>세 부류의 사람들</em></h2>
+          <h2>이 멤버십을 위한<br /><em>세 부류의 고객</em></h2>
         </div>
-        <div class="audience-list">
-          <div class="audience-row reveal">
-            <span class="audience-num">I</span>
-            <div class="audience-text">
-              <h3>Individual VIP</h3>
-              <p>반복되는 예약 없이 시간 대비 최상의 품질을 원하는 개인 고객</p>
-            </div>
-          </div>
-          <div class="audience-row reveal delay-1">
-            <span class="audience-num">II</span>
-            <div class="audience-text">
-              <h3>Corporate Entertainment</h3>
-              <p>VIP 초청 고객에게 잊을 수 없는 경험을 제공해야 하는 기업</p>
-            </div>
-          </div>
-          <div class="audience-row reveal delay-2">
-            <span class="audience-num">III</span>
-            <div class="audience-text">
-              <h3>Executive Benefits</h3>
-              <p>일반 복지를 넘어 고급 경험형 혜택이 필요한 조직과 임원</p>
-            </div>
-          </div>
+        <div class="audience-grid">
+          <article class="audience-card reveal">
+            <span class="audience-icon">I</span>
+            <h3>Individual VIP</h3>
+            <p>최상의 시간 대비 경험 품질을 중시하는 개인 고객</p>
+          </article>
+          <article class="audience-card reveal delay-1">
+            <span class="audience-icon">II</span>
+            <h3>Corporate Entertainment</h3>
+            <p>VIP 고객 초청과 임원 접대에 특화된 큐레이션</p>
+          </article>
+          <article class="audience-card reveal delay-2">
+            <span class="audience-icon">III</span>
+            <h3>Executive Benefits</h3>
+            <p>일상 복지를 넘어 고급 경험형 혜택을 원하는 조직과 임원</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Show Modal -->
     <div class="show-modal" id="showModal" role="dialog" aria-modal="true" aria-label="라스베이거스 쇼 영상" hidden>
       <div class="show-modal-backdrop"></div>
       <div class="show-modal-inner">
@@ -259,6 +273,10 @@
           <p class="eyebrow">STAY &amp; PLAY — SHOW</p>
           <h2>세계 최고의 쇼</h2>
           <button class="show-modal-close" aria-label="닫기">✕</button>
+        </div>
+        <div class="show-preview">
+          <img src="assets/show-visual.png" alt="쇼 비주얼" />
+          <button class="show-preview-play" aria-label="영상 재생">▶</button>
         </div>
         <div class="show-grid">
           <a class="show-card" href="https://www.youtube.com/watch?v=4zzTMjuCJvA" target="_blank" rel="noopener">
