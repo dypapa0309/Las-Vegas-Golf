@@ -59,12 +59,19 @@ button { font: inherit; }
   overflow-x: hidden;
 }
 .page-section.active {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: block;
   opacity: 1;
   transform: translateX(0);
-  padding: 48px 0;
+  padding: 72px 0 60px;
+}
+
+/* 데스크탑 페이지 섹션: reveal 즉시 표시 (페이지 전환 자체가 애니메이션) */
+.page-section .reveal,
+.page-section .reveal.show {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  transition-delay: 0s !important;
 }
 .page-section.slide-left {
   transform: translateX(-40px);
