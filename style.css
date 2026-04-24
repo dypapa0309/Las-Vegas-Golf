@@ -59,7 +59,9 @@ button { font: inherit; }
   overflow-x: hidden;
 }
 .page-section.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   opacity: 1;
   transform: translateX(0);
 }
@@ -537,6 +539,133 @@ button { font: inherit; }
 #golf       { background: #060e09; }
 #audience   { background: #0d2318; }
 
+/* ── About: 번호형 에디토리얼 리스트 ── */
+.about-list { display: flex; flex-direction: column; }
+.about-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 48px;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  align-items: start;
+}
+.about-item:first-child { border-top: 1px solid rgba(201, 168, 76, 0.1); }
+.about-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(201, 168, 76, 0.18);
+  letter-spacing: -0.02em;
+}
+.about-text h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin: 8px 0 14px;
+  text-transform: uppercase;
+}
+.about-text p { margin: 0; color: var(--muted); line-height: 1.75; font-size: 15px; }
+
+/* ── Membership: 2열 티어 카드 ── */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 8px;
+}
+.tier-card {
+  border-radius: 28px;
+  padding: 40px 36px;
+  background: rgba(13, 45, 27, 0.45);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+.tier-card--ultimate {
+  background: rgba(201, 168, 76, 0.06);
+  border-color: rgba(201, 168, 76, 0.3);
+}
+.tier-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--gold-light);
+  margin: 10px 0 6px;
+  letter-spacing: 0.01em;
+}
+.tier-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin: 0 0 28px;
+  text-transform: uppercase;
+}
+.tier-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tier-card ul li {
+  font-size: 14px;
+  color: var(--muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.tier-card ul li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  font-size: 6px;
+  color: var(--gold);
+  top: 6px;
+}
+.tier-card--ultimate ul li { color: rgba(245, 239, 224, 0.75); }
+
+/* ── Audience: 에디토리얼 로우 ── */
+.audience-list { display: flex; flex-direction: column; }
+.audience-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  align-items: center;
+}
+.audience-row:first-child { border-top: 1px solid rgba(201, 168, 76, 0.1); }
+.audience-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(201, 168, 76, 0.25);
+  line-height: 1;
+  text-align: center;
+}
+.audience-text h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.audience-text p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+/* section-head h2 em 이탤릭 */
+.section-head h2 em,
+.catalog-copy h2 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
 .golf-section { padding-top: 90px; }
 .audience-grid { grid-template-columns: repeat(3, 1fr); }
 .audience-card {
@@ -753,6 +882,9 @@ button { font: inherit; }
   /* 페이지 화살표 숨김 */
   .page-nav-controls { display: none !important; }
 
+  /* 모바일 flex 해제 */
+  .page-section { display: block !important; justify-content: unset !important; }
+
   .section { padding: 56px 0 60px; }
   .hero { padding-top: 40px; }
 
@@ -812,17 +944,21 @@ button { font: inherit; }
   .benefit-panel h3 { font-size: 20px; }
 
   /* membership */
-  .plan-board { min-height: 420px; }
-  .plan-card h3 { font-size: 38px; }
-  .plan-card ul { font-size: 13px; gap: 10px; }
+  /* about list */
+  .about-item { grid-template-columns: 70px 1fr; gap: 24px; padding: 28px 0; }
+  .about-num { font-size: 48px; }
+
+  /* tiers */
+  .tiers-grid { grid-template-columns: 1fr; gap: 16px; }
+  .tier-card { padding: 28px 22px; }
+  .tier-price { font-size: 42px; }
+
+  /* audience */
+  .audience-row { grid-template-columns: 56px 1fr; gap: 24px; padding: 26px 0; }
+  .audience-num { font-size: 36px; }
 
   /* chip */
   .chip-list span { padding: 9px 13px; font-size: 12px; }
-
-  /* audience */
-  .audience-card { padding: 18px; }
-  .catalog-card h3,
-  .audience-card h3 { font-size: 15px; margin-bottom: 10px; }
 
   /* 화살표 — 더 작고 반투명하게 */
   .page-nav { width: 42px; height: 42px; font-size: 18px; opacity: 0.85; }
